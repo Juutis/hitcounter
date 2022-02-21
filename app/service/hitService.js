@@ -7,7 +7,7 @@ if (!fs.existsSync(dbDir)){
 }
 
 const sanitize = (id) => {
-    id = id.replace(/[^a-z0-9\/\.]/gi,'')
+    id = id.replace(/[^a-z0-9\-\_\/\.]/gi,'')
     id = id.replace(/\/*$/g,'')
     id = id.replace(/\//g,'\u2215')
     return id.toLowerCase()
