@@ -6,8 +6,15 @@ if (!fs.existsSync(dbDir)){
     fs.mkdirSync(dbDir);
 }
 
+const sanitize = (id) => {
+    id = id.replace(/[^a-z0-9\/\.]/gi,'')
+    id = id.replace(/\/*$/g,'')
+    id = id.replace(/\//g,'\u2215')
+    return id
+}
+
 const getPath = (id) => {
-    return path.join(__dirname, '..', 'database', id);
+    return path.join(__dirname, '..', 'database', sanitize(id));
 }
 
 const readIds = async () => {
